@@ -1,8 +1,8 @@
 #PHP version
-php.version 5.0;
+php.version 7.0;
 
 #PHP extensions
-php.extensions PDO, mbstring, zip, zlib, ftp, json, dom, gd, mysql;
+php.extensions PDO, mbstring, zip, zlib, ftp, json, dom, gd, mysqli;
 
 #PHP.ini configuration
 ini.safe_mode off;
