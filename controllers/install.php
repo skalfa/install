@@ -182,9 +182,12 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             } 
             catch ( Exception $ex )
             {
-                INSTALL::getFeedback()->errorMessage($ex->getMessage());
+                
+                print_r($ex->getMessage());
+                exit;
+//                 INSTALL::getFeedback()->errorMessage($ex->getMessage());
 
-                $this->redirect();
+//                 $this->redirect();
             }
             
             $this->redirect( OW::getRouter()->urlForRoute('site') );
@@ -330,9 +333,12 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 }
                 catch ( InvalidArgumentException $e )
                 {
-                    INSTALL::getFeedback()->errorMessage('Could not connect to Database<div class="feedback_error">Error: ' . $e->getMessage() . '</div>');
+                    print_r($e->getMessage());
+                    exit;
+                    
+//                     INSTALL::getFeedback()->errorMessage('Could not connect to Database<div class="feedback_error">Error: ' . $e->getMessage() . '</div>');
 
-                    $this->redirect();
+//                     $this->redirect();
                 }
             }
 
@@ -393,9 +399,12 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             }
             catch ( InvalidArgumentException $e )
             {
-                INSTALL::getFeedback()->errorMessage('Could not connect to Database');
+                                    print_r($e->getMessage());
+                    exit;
+                
+//                 INSTALL::getFeedback()->errorMessage('Could not connect to Database');
 
-                $this->redirect();
+//                 $this->redirect();
             }
 
             try
@@ -404,9 +413,12 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             }
             catch ( Exception $e )
             {
-                INSTALL::getFeedback()->errorMessage($e->getMessage());
+                                    print_r($e->getMessage());
+                    exit;
+                
+//                 INSTALL::getFeedback()->errorMessage($e->getMessage());
 
-                $this->redirect();
+//                 $this->redirect();
             }
 
             try
@@ -415,7 +427,10 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             }
             catch ( Exception $e )
             {
-                OW::getConfig()->addConfig('base', 'site_installed', 0);
+                                    print_r($e->getMessage());
+                    exit;
+                
+//                 OW::getConfig()->addConfig('base', 'site_installed', 0);
             }
 
             if ( isset($_POST['continue']) || $doInstall )
