@@ -181,9 +181,9 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 
             } 
             catch ( Exception $ex )
-            {
-                
-                print_r($ex->getMessage());
+            {        
+                echo '--- here ---';
+                print_r($e);
                 exit;
 //                 INSTALL::getFeedback()->errorMessage($ex->getMessage());
 
@@ -332,13 +332,10 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                     }
                 }
                 catch ( InvalidArgumentException $e )
-                {
-                    print_r($e->getMessage());
-                    exit;
-                    
-//                     INSTALL::getFeedback()->errorMessage('Could not connect to Database<div class="feedback_error">Error: ' . $e->getMessage() . '</div>');
+                {                  
+                    INSTALL::getFeedback()->errorMessage('Could not connect to Database<div class="feedback_error">Error: ' . $e->getMessage() . '</div>');
 
-//                     $this->redirect();
+                    $this->redirect();
                 }
             }
 
@@ -399,12 +396,9 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             }
             catch ( InvalidArgumentException $e )
             {
-                                    print_r($e->getMessage());
-                    exit;
-                
-//                 INSTALL::getFeedback()->errorMessage('Could not connect to Database');
+                INSTALL::getFeedback()->errorMessage('Could not connect to Database');
 
-//                 $this->redirect();
+                $this->redirect();
             }
 
             try
@@ -412,13 +406,10 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 $this->sqlImport(INSTALL_DIR_FILES . 'install.sql');
             }
             catch ( Exception $e )
-            {
-                                    print_r($e->getMessage());
-                    exit;
-                
-//                 INSTALL::getFeedback()->errorMessage($e->getMessage());
+            {               
+                INSTALL::getFeedback()->errorMessage($e->getMessage());
 
-//                 $this->redirect();
+                $this->redirect();
             }
 
             try
@@ -426,11 +417,8 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 OW::getConfig()->saveConfig('base', 'site_installed', 0);
             }
             catch ( Exception $e )
-            {
-                                    print_r($e->getMessage());
-                    exit;
-                
-//                 OW::getConfig()->addConfig('base', 'site_installed', 0);
+            {               
+                OW::getConfig()->addConfig('base', 'site_installed', 0);
             }
 
             if ( isset($_POST['continue']) || $doInstall )
@@ -659,9 +647,6 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 OW::getDbo()->query($query);
             }
             catch ( Exception $e ) {
-                echo $e->getMessage();
-                print_r($e);
-                exit;
                 throw new LogicException('<b>ow_includes/config.php</b> file is incorrect. Update it with details provided below.');
             }
 
