@@ -182,7 +182,6 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             } 
             catch ( Exception $ex )
             {
-                echo '1';exit;
                 INSTALL::getFeedback()->errorMessage($ex->getMessage());
 
                 $this->redirect();
@@ -331,8 +330,6 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 }
                 catch ( InvalidArgumentException $e )
                 {
-                    echo '2';exit;
-                    
                     INSTALL::getFeedback()->errorMessage('Could not connect to Database<div class="feedback_error">Error: ' . $e->getMessage() . '</div>');
 
                     $this->redirect();
@@ -396,7 +393,9 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             }
             catch ( InvalidArgumentException $e )
             {
-                echo '3';exit;
+                
+                print_r($e->getMessage());
+                exit;
                 INSTALL::getFeedback()->errorMessage('Could not connect to Database');
 
                 $this->redirect();
@@ -408,7 +407,6 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             }
             catch ( Exception $e )
             {
-                echo '4';exit;
                 INSTALL::getFeedback()->errorMessage($e->getMessage());
 
                 $this->redirect();
@@ -420,8 +418,6 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             }
             catch ( Exception $e )
             {
-                echo '5';exit;
-                
                 OW::getConfig()->addConfig('base', 'site_installed', 0);
             }
 
@@ -569,8 +565,6 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 }
                 catch ( LogicException $e )
                 {
-                    echo '6';exit;
-                    
                     $notInstalledPlugins[] = $plugin['key'];
                 }
             }
@@ -653,8 +647,6 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 OW::getDbo()->query($query);
             }
             catch ( Exception $e ) {
-                echo '7';exit;
-                
                 throw new LogicException('<b>ow_includes/config.php</b> file is incorrect. Update it with details provided below.');
             }
 
