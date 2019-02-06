@@ -393,10 +393,6 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             }
             catch ( InvalidArgumentException $e )
             {
-                echo '<pre>';
-                print_r(file_get_contents($configFile));
-//                 print_r($e);
-                exit;
                 INSTALL::getFeedback()->errorMessage('Could not connect to Database');
 
                 $this->redirect();
@@ -434,9 +430,12 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
         $configContent = file_get_contents(INSTALL_DIR_FILES . 'config.txt');
         $data = INSTALL::getStorage()->getAll();
 
+        print_r($hostInfo);
+        exit;
         $hostInfo = explode(':', $data['db_host']);
         $data['db_host'] = $hostInfo[0];
         $data['db_port'] = empty($hostInfo[1]) ? 'null' : '"' . $hostInfo[1] . '"';
+        //$data['db_password'] = empty($hostInfo[1]) ? '' : '"' . $hostInfo[1] . '"';
 
         $data['password_salt'] = uniqid();
 
