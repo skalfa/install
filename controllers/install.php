@@ -394,6 +394,7 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
             catch ( InvalidArgumentException $e )
             {
                 
+                print_r(file_get_contents($configFile));
                 print_r($e->getMessage());
                 exit;
                 INSTALL::getFeedback()->errorMessage('Could not connect to Database');
