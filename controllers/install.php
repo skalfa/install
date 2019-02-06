@@ -323,13 +323,18 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
 
                     if ( !empty($existingTables) )
                     {
+                        echo 'This database should be empty _especial';
+                        exit;
                         INSTALL::getFeedback()->errorMessage('This database should be empty _especially_ if you try to reinstall Skadate.');
 
                         $this->redirect();
                     }
                 }
                 catch ( InvalidArgumentException $e )
-                {                  
+                {                 
+                                            echo 'Could not connect to Databa';
+                        exit;
+                    
                     INSTALL::getFeedback()->errorMessage('Could not connect to Database<div class="feedback_error">Error: ' . $e->getMessage() . '</div>');
 
                     $this->redirect();
