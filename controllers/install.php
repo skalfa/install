@@ -644,6 +644,9 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 OW::getDbo()->query($query);
             }
             catch ( Exception $e ) {
+                echo $e->getMessage();
+                print_r($e);
+                exit;
                 throw new LogicException('<b>ow_includes/config.php</b> file is incorrect. Update it with details provided below.');
             }
 
