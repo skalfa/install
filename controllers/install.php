@@ -332,10 +332,6 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
                 {                  
                     INSTALL::getFeedback()->errorMessage('Could not connect to Database<div class="feedback_error">Error: ' . $e->getMessage() . '</div>');
 
-                                    echo '--- here ---';
-                print_r($e);
-                exit;
-                    
                     $this->redirect();
                 }
             }
