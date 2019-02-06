@@ -323,8 +323,8 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
 
                     $existingTables = $dbo->queryForColumnList("SHOW TABLES LIKE '{$data['db_prefix']}base_%'");
 
-                    print_r($existingTables);
-                    exit;
+//                     print_r($existingTables);
+//                     exit;
                     if ( !empty($existingTables) )
                     {
                         INSTALL::getFeedback()->errorMessage('This database should be empty _especially_ if you try to reinstall Skadate.');
