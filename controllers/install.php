@@ -433,6 +433,7 @@ class INSTALL_CTRL_Install extends INSTALL_ActionController
         $hostInfo = explode(':', $data['db_host']);
         $data['db_host'] = $hostInfo[0];
         $data['db_port'] = empty($hostInfo[1]) ? 'null' : '"' . $hostInfo[1] . '"';
+        $data['db_password'] = empty($data['db_password']) ? '' : $data['db_password'];
 
         $data['password_salt'] = uniqid();
 
